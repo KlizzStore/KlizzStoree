@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>KlizzStore - Top Up Game Murah</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f9ff;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* NAVBAR */
+    .navbar {
+        width: 100%;
+        background: #0d6efd;
+        padding: 15px 20px;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .navbar .logo {
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .navbar a {
+        color: white;
+        text-decoration: none;
+        margin-left: 15px;
+        font-weight: bold;
+    }
+
+    /* BANNER - BISA DIGANTI */
+    .banner {
+        width: 100%;
+        height: 180px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 0 0 15px 15px;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+    }
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo">KlizzStore</div>
+    <div>
+        <a href="#home">Beranda</a>
+        <a href="#games">Top Up</a>
+        <a href="#manfaat">Manfaat</a>
+        <a href="#kontak">Kontak</a>
+    </div>
+</div>
+
+<!-- BANNER - GANTI FOTO DI SINI -->
+<div class="banner" style="background-image: url('bkr.jpg');"></div>
+
+<!-- SECTION GAME -->
+<section id="games" style="padding: 25px;">
+
+<h2 style="text-align:center; color:#0d6efd; margin-bottom:20px;">
+    Pilih Game yang Mau di Top Up
+</h2>
+
+<style>
+    .game-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 15px;
+        padding: 10px;
+    }
+
+    .game-card {
+        background: white;
+        border-radius: 12px;
+        padding: 15px;
+        text-align: center;
+        border: 2px solid #e0ecff;
+        transition: 0.3s;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        cursor: pointer;
+    }
+
+    .game-card:hover {
+        transform: scale(1.05);
+        border-color: #0d6efd;
+        box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+
+    .game-card img {
+        width: 70px;
+        height: 70px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+
+    .game-card-name {
+        font-weight: bold;
+        font-size: 17px;
+        color: #0d6efd;
+        margin-top: 5px;
+    }
+</style>
+
+<div class="game-grid">
+
+    <!-- ML -->
+    <div class="game-card" onclick="showTopUpForm('ml')" id="card-ml">
+        <img src="mlbb.jpg" alt="">
+        <div class="game-card-name">Mobile Legends</div>
+    </div>
+
+    <!-- Free Fire -->
+    <div class="game-card" onclick="showTopUpForm('ff')" id="card-ff">
+        <img src="ff.png" alt="">
+        <div class="game-card-name">Free Fire</div>
+    </div>
+
+    <!-- PUBG -->
+    <div class="game-card" onclick="showTopUpForm('pubg')" id="card-pubg">
+        <img src="pubgm.jpg" alt="">
+        <div class="game-card-name">PUBG Mobile</div>
+    </div>
+
+    <!-- Honor of Kings -->
+    <div class="game-card" onclick="showTopUpForm('hok')" id="card-hok">
+        <img src="hok.jpeg" alt="">
+        <div class="game-card-name">Honor of Kings</div>
+    </div>
+
+    <!-- ROBLOX -->
+    <div class="game-card" onclick="showTopUpForm('roblox')" id="card-roblox">
+        <img src="Roblox.png" alt="">
+        <div class="game-card-name">Roblox</div>
+    </div>
+
+</div>
+</section>
+
+<!-- ========================= -->
+<!-- ===== FORM TOP UP ====== -->
+<!-- ========================= -->
+
+<style>
+    .topup-section {
+        display: none;
+        background: white;
+        margin: 15px;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+        from {opacity: 0; transform: translateY(10px);}
+        to {opacity: 1; transform: translateY(0);}
+    }
+
+    .currency-option {
+        padding: 10px;
+        border: 2px solid #dce7ff;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .currency-option:hover {
+        border-color: #0d6efd;
+    }
+
+    .currency-option.selected {
+        border-color: #0d6efd;
+        background: #e8f0ff;
+    }
+
+    .input-box {
+        width: 100%;
+        padding: 10px;
+        border: 2px solid #dce7ff;
+        border-radius: 10px;
+        margin-top: 10px;
+        font-size: 16px;
+    }
+
+    .pay-btn {
+        width: 100%;
+        padding: 12px;
+        margin-top: 15px;
+        background: #0d6efd;
+        color: white;
+        font-size: 18px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .pay-btn:hover {
+        background: #074bb5;
+    }
+
+</style>
+
+<!-- MOBILE LEGENDS -->
+<div class="topup-section" id="topup-form-ml">
+
+    <h2>Mobile Legends</h2>
+
+    <input id="ml-id" class="input-box" placeholder="Masukkan ID + Server">
+
+    <h3>Pilih Diamond</h3>
+    <div id="ml-currency-options">
+
+        <div class="currency-option" data-value="84 DM" data-harga="27000">84 DM — Rp 27.000</div>
+        <div class="currency-option" data-value="178 DM" data-harga="54000">178 DM — Rp 54.000</div>
+        <div class="currency-option" data-value="257 DM" data-harga="78000">257 DM — Rp 78.000</div>
+        <div class="currency-option" data-value="346 DM" data-harga="105000">346 DM — Rp 105.000</div>
+        <div class="currency-option" data-value="407 DM" data-harga="123000">407 DM — Rp 123.000</div>
+        <div class="currency-option" data-value="468 DM" data-harga="141000">468 DM — Rp 141.000</div>
+        <div class="currency-option" data-value="505 DM" data-harga="154000">505 DM — Rp 154.000</div>
+        <div class="currency-option" data-value="564 DM" data-harga="172000">564 DM — Rp 172.000</div>
+        <div class="currency-option" data-value="633 DM" data-harga="193000">633 DM — Rp 193.000</div>
+
+
+
+    </div>
+
+    <h3>Total: <span id="ml-total-price">Rp 0</span></h3>
+
+    <select id="ml-payment" class="input-box">
+        <option value="">Pilih Pembayaran</option>
+        <option>DANA</option>
+        <option>OVO</option>
+        <option>GoPay</option>
+    </select>
+
+    <button class="pay-btn" onclick="checkoutToWA('ml')">Order Sekarang</button>
+</div>
+
+
+<!-- FREE FIRE -->
+<div class="topup-section" id="topup-form-ff">
+
+    <h2>Free Fire</h2>
+
+    <input id="ff-id" class="input-box" placeholder="Masukkan ID">
+
+    <h3>Pilih Diamond</h3>
+    <div id="ff-currency-options">
+
+        <div class="currency-option" data-value="5 DM" data-harga="1000">5 DM — Rp 1.000</div>
+        <div class="currency-option" data-value="12 DM" data-harga="2000">12 DM — Rp 2.000</div>
+        <div class="currency-option" data-value="50 DM" data-harga="8000">50 DM — Rp 8.000</div>
+        <div class="currency-option" data-value="70 DM" data-harga="11000">70 DM — Rp 11.000</div>
+        <div class="currency-option" data-value="140 DM" data-harga="20500">140 DM — Rp 20.500</div>
+        <div class="currency-option" data-value="355 DM" data-harga="49000">355 DM — Rp 49.000</div>
+        <div class="currency-option" data-value="500 DM" data-harga="68500">500 DM — Rp 68.500</div>
+        <div class="currency-option" data-value="720 DM" data-harga="96500">720 DM — Rp 96.500</div>
+        <div class="currency-option" data-value="1000 DM" data-harga="134000">1000 DM — Rp 134.000</div>
+
+    </div>
+
+    <h3>Total: <span id="ff-total-price">Rp 0</span></h3>
+
+    <select id="ff-payment" class="input-box">
+        <option value="">Pilih Pembayaran</option>
+        <option>DANA</option>
+        <option>OVO</option>
+        <option>GoPay</option>
+    </select>
+
+    <button class="pay-btn" onclick="checkoutToWA('ff')">Order Sekarang</button>
+</div>
+
+
+<!-- PUBG -->
+<div class="topup-section" id="topup-form-pubg">
+
+    <h2>PUBG Mobile</h2>
+
+    <input id="pubg-id" class="input-box" placeholder="Masukkan ID + Server">
+
+    <h3>Pilih UC</h3>
+    <div id="pubg-currency-options">
+
+        <div class="currency-option" data-value="60 UC" data-harga="17000">60 UC — Rp 17.000</div>
+        <div class="currency-option" data-value="300 UC" data-harga="81000">300 UC — Rp 81.000</div>
+        <div class="currency-option" data-value="1500 UC" data-harga="408000">1500 UC — Rp 408.000</div>
+        <div class="currency-option" data-value="3000 UC" data-harga="815000">3000 UC — Rp 815.000</div>
+        <div class="currency-option" data-value="6000 UC" data-harga="1640000">6000 UC — Rp 1.640.000</div>
+
+    </div>
+
+    <h3>Total: <span id="pubg-total-price">Rp 0</span></h3>
+
+    <select id="pubg-payment" class="input-box">
+        <option value="">Pilih Pembayaran</option>
+        <option>DANA</option>
+        <option>OVO</option>
+        <option>GoPay</option>
+    </select>
+
+    <button class="pay-btn" onclick="checkoutToWA('pubg')">Order Sekarang</button>
+</div>
+
+
+<!-- HONOR OF KINGS -->
+<div class="topup-section" id="topup-form-hok">
+
+    <h2>Honor of Kings</h2>
+
+    <input id="hok-id" class="input-box" placeholder="Masukkan ID">
+
+    <h3>Pilih Token</h3>
+    <div id="hok-currency-options">
+
+         <div class="currency-option" data-value="60" data-harga="15000">60 Token - Rp15.000</div>
+         <div class="currency-option" data-value="300" data-harga="75000">300 Token - Rp75.000</div>
+          <div class="currency-option" data-value="600" data-harga="150000">600 Token - Rp150.000</div>
+          <div class="currency-option" data-value="1200" data-harga="300000">1200 Token - Rp300.000</div>
+          <div class="currency-option" data-value="3000" data-harga="750000">3000 Token - Rp750.000</div>
+            <div class="currency-option" data-value="6000" data-harga="1500000">6000 Token - Rp1.500.000</div>
+
+    </div>
+
+    <h3>Total: <span id="hok-total-price">Rp 0</span></h3>
+
+    <select id="hok-payment" class="input-box">
+        <option value="">Pilih Pembayaran</option>
+        <option>DANA</option>
+        <option>OVO</option>
+        <option>GoPay</option>
+    </select>
+
+    <button class="pay-btn" onclick="checkoutToWA('hok')">Order Sekarang</button>
+</div>
+
+
+<!-- ROBLOX -->
+<div class="topup-section" id="topup-form-roblox">
+
+    <h2>Roblox</h2>
+
+    <input id="roblox-id" class="input-box" placeholder="Masukkan Username Roblox">
+
+    <h3>Pilih Robux</h3>
+    <div id="roblox-currency-options">
+
+        <div class="currency-option" data-value="80 Robux" data-harga="14000">80 Robux — Rp 14.000</div>
+        <div class="currency-option" data-value="100 Robux" data-harga="16000">100 Robux — Rp 16.000</div>
+        <div class="currency-option" data-value="240 Robux" data-harga="36000">240 Robux — Rp 36.000</div>
+        <div class="currency-option" data-value="400 Robux" data-harga="55000">400 Robux — Rp 55.000</div>
+        <div class="currency-option" data-value="580 Robux" data-harga="79000">580 Robux — Rp 79.000</div>
+        <div class="currency-option" data-value="800 Robux" data-harga="110000">800 Robux — Rp 110.000</div>
+        <div class="currency-option" data-value="920 Robux" data-harga="125000">920 Robux — Rp 125.000</div>
+        <div class="currency-option" data-value="1000 Robux" data-harga="135000">1000 Robux — Rp 135.000</div>
+        <div class="currency-option" data-value="6000 Robux" data-harga="675000">6000 Robux — Rp 675.000</div>
+
+    </div>
+
+    <h3>Total: <span id="roblox-total-price">Rp 0</span></h3>
+
+    <select id="roblox-payment" class="input-box">
+        <option value="">Pilih Pembayaran</option>
+        <option>DANA</option>
+        <option>OVO</option>
+        <option>GoPay</option>
+    </select>
+
+    <button class="pay-btn" onclick="checkoutToWA('roblox')">Order Sekarang</button>
+</div>
+
+<!-- ============================= -->
+<!--      SECTION MANFAAT         -->
+<!-- ============================= -->
+
+<section id="manfaat" style="padding: 20px;">
+    <h2 style="text-align:center; color:#0d6efd;">Manfaat Top Up di KlizzStore</h2>
+
+    <div style="margin-top:15px; background:white; padding:15px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.15);">
+
+        <p>⭐ <b>Harga Termurah</b> — lebih murah dibanding toko lain</p>
+        <p>⚡ <b>Proses Kilat</b> — 1–5 menit langsung masuk</p>
+        <p>💳 <b>Banyak Pembayaran</b> — DANA, OVO, GoPay</p>
+        <p>🛡 <b>100% Aman</b> — tanpa minta data login</p>
+        <p>📞 <b>CS Fast Respon</b> — dibantu sampai masuk</p>
+
+    </div>
+</section>
+
+
+<!-- ============================= -->
+<!--         SECTION KONTAK        -->
+<!-- ============================= -->
+
+<section id="kontak" style="padding: 20px;">
+    <h2 style="text-align:center; color:#0d6efd;">Hubungi KlizzStore</h2>
+
+    <div style="margin-top:15px; background:white; padding:15px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.15);">
+
+        <p>📱 <b>WhatsApp:</b> <br> <a href="https://wa.me/6289668141956" style="color:#0d6efd;">6289668141956</a></p>
+
+        <p>📸 <b>Instagram:</b> <br> @-</p>
+
+        <p>🎮 <b>Tiktok:</b> <br> @-</p>
+
+        <p>🕒 <b>Jam Operasional:</b> <br> 08:00 – 23:00</p>
+
+    </div>
+</section>
+
+
+
+<!-- ============================= -->
+<!--            FOOTER             -->
+<!-- ============================= -->
+
+<footer style="background:#0d6efd; color:white; text-align:center; padding:15px; margin-top:20px;">
+    © 2025 KlizzStore — Top Up Game Murah & Aman
+</footer>
+
+
+
+<!-- ============================= -->
+<!--         JAVASCRIPT            -->
+<!-- ============================= -->
+
+<script>
+
+    const WA_NUMBER = "6289668141956";
+
+    // Format harga rupiah
+    function formatRupiah(angka) {
+        return new Intl.NumberFormat("id-ID", {
+            style: "currency",
+            currency: "IDR",
+            minimumFractionDigits: 0
+        }).format(Number(angka));
+    }
+
+    // Setup klik nominal
+    function setupCurrencySelection(gameId) {
+        const options = document.querySelectorAll(`#${gameId}-currency-options .currency-option`);
+        const priceDisplay = document.getElementById(`${gameId}-total-price`);
+    
+        options.forEach(option => {
+            option.addEventListener("click", function() {
+                document.querySelectorAll(`#${gameId}-currency-options .currency-option`)
+                    .forEach(o => o.classList.remove("selected"));
+                
+                this.classList.add("selected");
+                
+                const harga = this.getAttribute("data-harga");
+                priceDisplay.textContent = formatRupiah(harga);
+            });
+        });
+    }
+
+    ["ml","ff","pubg","hok","roblox"].forEach(id => setupCurrencySelection(id));
+
+    // Show form per game
+    function showTopUpForm(game) {
+        document.querySelectorAll(".topup-section").forEach(f => f.style.display = "none");
+        document.getElementById(`topup-form-${game}`).style.display = "block";
+
+        document.querySelectorAll(".game-card").forEach(c => c.classList.remove("active"));
+        document.getElementById(`card-${game}`).classList.add("active");
+
+        window.scrollTo({ top: 500, behavior: "smooth" });
+    }
+
+    const gameNames = {
+        ml: "Mobile Legends",
+        ff: "Free Fire",
+        pubg: "PUBG Mobile",
+        hok: "Honor of Kings",
+        roblox: "Roblox"
+    };
+
+    // Checkout ke WA
+    function checkoutToWA(game) {
+
+        const selected = document.querySelector(`#${game}-currency-options .currency-option.selected`);
+        if (!selected) return alert("Pilih nominal dulu bro!");
+
+        const jumlah = selected.getAttribute("data-value");
+        const harga = selected.getAttribute("data-harga");
+
+        const idPlayer = document.getElementById(`${game}-id`).value.trim();
+        if (idPlayer === "") return alert("Isi ID dulu!");
+
+        const payment = document.getElementById(`${game}-payment`).value;
+        if (!payment) return alert("Pilih metode pembayaran!");
+
+        const pesan =
+`Halo Min! Saya mau order top up nih 🙏
+
+🎮 Game: ${gameNames[game]}
+🆔 ID: ${idPlayer}
+💎 Nominal: ${jumlah}
+💰 Harga: ${formatRupiah(harga)}
+💳 Pembayaran: ${payment}
+
+Tolong diproses ya kak 🙏🔥`;
+
+        const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(pesan)}`;
+        window.open(url, "_blank");
+    }
+
+</script>
+
+</body>
+</html>
